@@ -11,7 +11,8 @@ export enum Collections {
 	Mfas = "_mfas",
 	Otps = "_otps",
 	Superusers = "_superusers",
-	Personne = "personne",
+	Films = "films",
+	Personnes = "personnes",
 	Users = "users",
 }
 
@@ -86,7 +87,14 @@ export type SuperusersRecord = {
 	verified?: boolean
 }
 
-export type PersonneRecord = {
+export type FilmsRecord = {
+	created?: IsoDateString
+	id: string
+	titre?: string
+	updated?: IsoDateString
+}
+
+export type PersonnesRecord = {
 	created?: IsoDateString
 	dateNaissance?: IsoDateString
 	id: string
@@ -115,7 +123,8 @@ export type ExternalauthsResponse<Texpand = unknown> = Required<ExternalauthsRec
 export type MfasResponse<Texpand = unknown> = Required<MfasRecord> & BaseSystemFields<Texpand>
 export type OtpsResponse<Texpand = unknown> = Required<OtpsRecord> & BaseSystemFields<Texpand>
 export type SuperusersResponse<Texpand = unknown> = Required<SuperusersRecord> & AuthSystemFields<Texpand>
-export type PersonneResponse<Texpand = unknown> = Required<PersonneRecord> & BaseSystemFields<Texpand>
+export type FilmsResponse<Texpand = unknown> = Required<FilmsRecord> & BaseSystemFields<Texpand>
+export type PersonnesResponse<Texpand = unknown> = Required<PersonnesRecord> & BaseSystemFields<Texpand>
 export type UsersResponse<Texpand = unknown> = Required<UsersRecord> & AuthSystemFields<Texpand>
 
 // Types containing all Records and Responses, useful for creating typing helper functions
@@ -126,7 +135,8 @@ export type CollectionRecords = {
 	_mfas: MfasRecord
 	_otps: OtpsRecord
 	_superusers: SuperusersRecord
-	personne: PersonneRecord
+	films: FilmsRecord
+	personnes: PersonnesRecord
 	users: UsersRecord
 }
 
@@ -136,7 +146,8 @@ export type CollectionResponses = {
 	_mfas: MfasResponse
 	_otps: OtpsResponse
 	_superusers: SuperusersResponse
-	personne: PersonneResponse
+	films: FilmsResponse
+	personnes: PersonnesResponse
 	users: UsersResponse
 }
 
@@ -149,6 +160,7 @@ export type TypedPocketBase = PocketBase & {
 	collection(idOrName: '_mfas'): RecordService<MfasResponse>
 	collection(idOrName: '_otps'): RecordService<OtpsResponse>
 	collection(idOrName: '_superusers'): RecordService<SuperusersResponse>
-	collection(idOrName: 'personne'): RecordService<PersonneResponse>
+	collection(idOrName: 'films'): RecordService<FilmsResponse>
+	collection(idOrName: 'personnes'): RecordService<PersonnesResponse>
 	collection(idOrName: 'users'): RecordService<UsersResponse>
 }
