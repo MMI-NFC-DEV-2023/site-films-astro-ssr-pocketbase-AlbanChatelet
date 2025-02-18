@@ -1,0 +1,12 @@
+---
+import { pb } from "../../backend";
+import Layout from '../../layouts/Layout.astro';
+export const prerender = false;
+
+const films = await pb.collection("films").getFullList();
+---
+<Layout pageTitle="Liste des personne ">
+    <h1>Liste des films </h1>
+<pre>{JSON.stringify(films, null, 2)}</pre>
+
+</Layout>
